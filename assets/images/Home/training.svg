@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="60.264" height="60.264" viewBox="0 0 60.264 60.264">
+  <g id="group-presentation" transform="translate(-3 -3)">
+    <path id="Path_7214" data-name="Path 7214" d="M20.218,48.261h-4.3V41.8H7.3v6.457H3V41.8a4.309,4.309,0,0,1,4.3-4.3h8.609a4.309,4.309,0,0,1,4.3,4.3Z" transform="translate(0 15.002)"/>
+    <path id="Path_7215" data-name="Path 7215" d="M50.218,48.261h-4.3V41.8H37.3v6.457H33V41.8a4.309,4.309,0,0,1,4.3-4.3h8.609a4.309,4.309,0,0,1,4.3,4.3Z" transform="translate(13.045 15.002)"/>
+    <path id="Path_7216" data-name="Path 7216" d="M35.218,48.261h-4.3V41.8H22.3v6.457H18V41.8a4.309,4.309,0,0,1,4.3-4.3h8.609a4.309,4.309,0,0,1,4.3,4.3Z" transform="translate(6.523 15.002)"/>
+    <ellipse id="Ellipse_59" data-name="Ellipse 59" cx="4.427" cy="3.984" rx="4.427" ry="3.984" transform="translate(28.677 42.014)"/>
+    <ellipse id="Ellipse_60" data-name="Ellipse 60" cx="4.427" cy="3.984" rx="4.427" ry="3.984" transform="translate(7.427 42.014)"/>
+    <ellipse id="Ellipse_61" data-name="Ellipse 61" cx="4.427" cy="3.984" rx="4.427" ry="3.984" transform="translate(49.927 42.014)"/>
+    <circle id="Ellipse_62" data-name="Ellipse 62" cx="4.305" cy="4.305" r="4.305" transform="translate(39.589 33.132)"/>
+    <circle id="Ellipse_63" data-name="Ellipse 63" cx="4.305" cy="4.305" r="4.305" transform="translate(18.066 33.132)"/>
+    <path id="Path_7217" data-name="Path 7217" d="M53.35,28.827H10.3a4.309,4.309,0,0,1-4.3-4.3V7.3A4.309,4.309,0,0,1,10.3,3H53.35a4.309,4.309,0,0,1,4.3,4.3V24.523A4.309,4.309,0,0,1,53.35,28.827ZM10.3,7.3V24.523H53.35V7.3Z" transform="translate(1.305)"/>
+  </g>
+</svg>

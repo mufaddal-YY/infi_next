@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="109.767" height="109.768" viewBox="0 0 109.767 109.768">
+  <g id="Group_28055" data-name="Group 28055" transform="translate(-26.43 -18.271)">
+    <path id="Rectangle_267" data-name="Rectangle 267" d="M605,357.551h0a61.394,61.394,0,0,1,61.4,61.389v0h0a48.369,48.369,0,0,1-48.365,48.374h-61.4v-61.4A48.37,48.37,0,0,1,605,357.551Z" transform="translate(-530.197 -339.28)" fill="#ecf1f9"/>
+    <g id="computer-solid-badged" transform="translate(53.731 50.604)">
+      <path id="Path_6260" data-name="Path 6260" d="M38.35,34.667c-.568,1.461-1.525,2.434-2.613,2.434H22.008c-1.1,0-2.045-.974-2.613-2.434H1.333v2.84a3.976,3.976,0,0,0,4.219,3.651H52.291a3.976,3.976,0,0,0,4.219-3.651v-2.84Z" transform="translate(-1.333 5.904)" fill="#1550b2"/>
+      <path id="Path_6261" data-name="Path 6261" d="M10.2,14.491H37.239A12.106,12.106,0,0,1,35.356,8H7.768a2.5,2.5,0,0,0-2.434,2.548V37.211H10.2Z" transform="translate(-0.465 0.114)" fill="#1550b2"/>
+      <path id="Path_6262" data-name="Path 6262" d="M43.535,17.627a11.587,11.587,0,0,1-4.869.325v17.17h4.869Z" transform="translate(6.773 2.204)" fill="#1550b2"/>
+      <ellipse id="Ellipse_1" data-name="Ellipse 1" cx="8.114" cy="8.114" rx="8.114" ry="8.114" transform="translate(38.948 0)" fill="#1550b2"/>
+    </g>
+  </g>
+</svg>
