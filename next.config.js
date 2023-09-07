@@ -4,7 +4,6 @@ const nextConfig = {
   experimental: {
     appDir: true,
   },
-  distDir: "build",
   images: {
     remotePatterns: [
       {
