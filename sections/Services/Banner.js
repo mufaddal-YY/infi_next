@@ -1,7 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import BannerImage from "@assets/images/Services/service-banner-girl.png";
-import CtaCard from "@assets/images/home/Cta-card.svg";
 
 const HeroBanner = () => {
   return (
