@@ -51,7 +51,7 @@ const content = [
   },
 ];
 
-const Testi = () => {
+const Testi = ({skills}) => {
   const settings = {
     dots: false,
     infinite: true,
@@ -94,11 +94,11 @@ const Testi = () => {
   return (
     <>
       <Slider {...settings} className="testimonial-carousel style2 arrow-none ">
-        {content.map((item) => (
-          <div className="slider-item ">
+        {skills.map((item) => (
+          <div className="slider-item" key={item.title}>
             <div className="testimonial-bx d-flex style2">
               <div>
-                <Image width={40} src={item.thumb} alt="" />
+                <Image width={40} height={40} src={item.image} alt="" />
               </div>
               <div className="p-l10 p-t5">
                 <p>{item.title}</p>

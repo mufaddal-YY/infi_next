@@ -27,6 +27,14 @@ export default {
               type: "string",
             },
             {
+              name: "icon",
+              type: "image",
+              title: "Image",
+              option: {
+                hotspot: "true",
+              },
+            },
+            {
               name: "description",
               title: "Description",
               type: "array",

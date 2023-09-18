@@ -5,6 +5,7 @@ const nextConfig = {
     appDir: true,
   },
   images: {
+    domains: ['cdn.sanity.io'],
     remotePatterns: [
       {
         protocol: "https",

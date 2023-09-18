@@ -1,12 +1,11 @@
-"use client"
-import React, { useEffect, useState, useRef, forwardRef } from "react";
-import Count from "../../components/Counter";
+"use client";
+import React, { useRef } from "react";
+import CountUp from "react-countup";
 import Slider from "react-slick";
 import SliderImage from "./../../assets/images/Home/roundSlider.webp";
 import { BsArrowRight } from "react-icons/bs";
 import Image from "next/image";
 import SliderTwo from "./../../components/Slider2";
-
 import SliderHome from "../../components/SliderHome";
 import SliderThree from "../../components/Slider3";
 
@@ -43,7 +42,7 @@ const content = [
   },
 ];
 
-const TrendingPrograms = () => {
+const TrendingPrograms = ({ homeData }) => {
   const settings = {
     infinite: true,
     speed: 500,
@@ -93,118 +92,77 @@ const TrendingPrograms = () => {
 
   return (
     <div className="container">
-      <div className="row">
-        <div className="col-sm-12 col-lg-5 text-center">
-          <div className="circle-container">
-            <svg
-              viewBox="0 0 100 100"
-              className="dashes rotate zi100"
-              fill="none"
-              stroke="blue"
-              strokeDasharray="2 4 4 3 2 3 8 2 3 5">
-              <circle r="50" cx="50" cy="50"></circle>
-            </svg>
-            <div className="image-container">
-              <Image width="100%" src={SliderImage} alt="" />
+      {homeData.map((item, index) => (
+        <div className="row" key={index}>
+          <div className="col-sm-12 col-lg-5 text-center">
+            <div className="circle-container">
+              <svg
+                viewBox="0 0 100 100"
+                className="dashes rotate zi100"
+                fill="none"
+                stroke="blue"
+                strokeDasharray="2 4 4 3 2 3 8 2 3 5">
+                <circle r="50" cx="50" cy="50"></circle>
+              </svg>
+              <div className="image-container">
+                <Image width="100%" src={SliderImage} alt="" />
+              </div>
+              <div className="mt--30 p-20 ">
+                <div className="blurButton " onClick={handleNextSlide}>
+                  <BsArrowRight className="arrow" />
+                </div>
+                <div
+                  className="code-icon bg-white feature-bx1  "
+                  style={{ borderRadius: "8px" }}>
+                  <p className="p-10">Exactly what are we up to?</p>
+                </div>
+                <SliderHome slider={item.slider} ref={slider1} />
+              </div>
             </div>
-            <div className="mt--30 p-20 ">
-              <div className="blurButton " onClick={handleNextSlide}>
-                <BsArrowRight className="arrow" />
-              </div>
-              <div
-                className="code-icon bg-white feature-bx1  "
-                style={{ borderRadius: "8px" }}>
-                <p className="p-10">
-                  Exactly what are we up to?
-                </p>
-              </div>
-              <SliderHome ref={slider1} />
+          </div>
+          <div className="col-sm"></div>
+
+          <div className="col-sm-12 col-lg-6 order-lg-2 m-t20 hidden">
+            <h4 className="text-blue">{item.sectionHead}</h4>
+
+            <hr />
+            <h6>
+              Numbers are confirmation of words <BsArrowRight />
+            </h6>
+            <div className="d-flex justify-content-between row m-t20 m-b0">
+              {item.stats.map((stat) => (
+                <div className="counter-style-3 col-6 col-md-3 text-center" key={stat.description}>
+                  <div className="text-primary">
+                    <CountUp start={0} end={stat.number} />
+                    <span>+</span>
+                  </div>
+                  <span className="counter-text">{stat.description}</span>
+                </div>
+              ))}
+            </div>
+            <SliderTwo slider={item.slider} ref={slider2} />
+          </div>
+          <div className="col-sm-12 col-lg-6 order-lg-2 m-t20 hidden-desk">
+            <SliderThree slider={item.slider} className="m-b20" ref={slider3} />
+            <h4 className="text-blue">{item.sectionHead}</h4>
+            <hr />
+            <h6>
+              Numbers are confirmation of words <BsArrowRight />
+            </h6>
+            <div className="d-flex justify-content-between row m-t20 m-b0">
+              {item.stats.map((stat) => (
+                <div className="counter-style-3 col-6 col-sm-3 text-center" key={stat.description}>
+                  <div className="text-primary">
+                    <CountUp start={0} end={stat.number} />
+                    <span>+</span>
+                  </div>
+                  <span className="counter-text">{stat.description}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
-        <div className="col-sm"></div>
-        
-        <div className="col-sm-12 col-lg-6 order-lg-2 m-t20 hidden">
-          <h4 className="text-blue">
-            Trending programs that have real impact
-          </h4>
-          <hr />
-          <h6>
-            Numbers are confirmation of words <BsArrowRight />
-          </h6>
-          <div className="d-flex justify-content-between row m-t20 m-b0">
-            <div className="counter-style-3 col-6 col-md-3 text-center ">
-              <div className="text-primary">
-                <Count counter={200} />
-                <span>+</span>
-              </div>
-              <span className="counter-text">Institutions Connected</span>
-            </div>
-            <div className="counter-style-3 col-6 col-md-3 text-center ">
-              <div className="text-primary">
-                <Count counter={500} />
-                <span>k+</span>
-              </div>
-              <span className="counter-text">Individuals Skilled</span>
-            </div>
-            <div className="counter-style-3 col-6 col-md-3 text-center ">
-              <div className="text-primary">
-                <Count counter={10} />
-                <span>+</span>
-              </div>
-              <span className="counter-text">State Govt. Association</span>
-            </div>
-            <div className="counter-style-3 col-6 col-md-3 text-center ">
-              <div className="text-primary">
-                <Count counter={20} />
-                <span>+</span>
-              </div>
-              <span className="counter-text">Brands Collaborations</span>
-            </div>
-          </div>
-          <SliderTwo ref={slider2} />
-        </div>
-        <div className="col-sm-12 col-lg-6 order-lg-2 m-t20 hidden-desk">
-          <SliderThree className="m-b20" ref={slider3} />
-          <h4 className="text-blue">
-            Trending programs that have real impact
-          </h4>
-          <hr />
-          <h6>
-            Numbers are confirmation of words <BsArrowRight />
-          </h6>
-          <div className="d-flex justify-content-between row m-t20 m-b0">
-            <div className="counter-style-3 col-6 col-sm-3 text-center ">
-              <div className="text-primary">
-                <Count counter={200} />
-                <span>+</span>
-              </div>
-              <span className="counter-text">Institutions Connected</span>
-            </div>
-            <div className="counter-style-3 col-6 col-sm-3 text-center ">
-              <div className="text-primary">
-                <Count counter={500} />
-                <span>k+</span>
-              </div>
-              <span className="counter-text">Individuals Skilled</span>
-            </div>
-            <div className="counter-style-3 col-6 col-sm-3 text-center ">
-              <div className="text-primary">
-                <Count counter={10} />
-                <span>+</span>
-              </div>
-              <span className="counter-text">State Govt. Association</span>
-            </div>
-            <div className="counter-style-3 col-6 col-sm-3 text-center ">
-              <div className="text-primary">
-                <Count counter={20} />
-                <span>+</span>
-              </div>
-              <span className="counter-text">Brands Collaborations</span>
-            </div>
-          </div>
-        </div>
-      </div>
+      ))}
     </div>
   );
 };

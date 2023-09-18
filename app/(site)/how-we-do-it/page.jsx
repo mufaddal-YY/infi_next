@@ -1,41 +1,29 @@
-import Head from "next/head";
 import HeroBanner from "@sections/HowWeDoIt/Banner";
 import ProvenApproach from "@sections/HowWeDoIt/ProvenApproach";
 import WhyChoose from "@sections/HowWeDoIt/WhyChoose";
 import CtaUni from "@sections/HowWeDoIt/CtaUni";
 import Link from "next/link";
-const about = () => {
+import { getHowWeDoData } from "@sanity/sanity-utils";
+
+export const metadata = {
+  title: "Infispark - How we do it",
+  description:
+    "Infispark is founded solely for the purpose of uplifting women and empowering them to advance in IT skills, thereby becoming more tech-savvy and future-ready. We’re bridging the gap between the deserving candidates and some of the finest recruiters in the business.",
+};
+
+const about = async () => {
+  const HowWeDoData = await getHowWeDoData();
+
   return (
     <>
-      <Head>
-        <link
-          rel="stylesheet"
-          href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
-          integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
-          crossorigin="anonymous"
-        />
-        <script
-          async
-          src="https://kit.fontawesome.com/0cd2d10be4.js"
-          crossorigin="anonymous"></script>
-
-        <title>Infispark - How we do it</title>
-        <meta
-          name="description"
-          content="Infispark is founded solely for the purpose of uplifting women and empowering them to advance in IT skills, thereby becoming more tech-savvy and future-ready. We’re bridging the gap between the deserving candidates and some of the finest recruiters in the business."
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-    
       <HeroBanner />
 
       <div className="section-container section-sp4 bg-white">
-        <ProvenApproach />
+        <ProvenApproach HowWeDoData={HowWeDoData} />
       </div>
 
       <div className="section-container section-sp4 bg-white">
-        <WhyChoose />
+        <WhyChoose HowWeDoData={HowWeDoData} />
       </div>
 
       <div className="section-container section-sp4 bg-white">

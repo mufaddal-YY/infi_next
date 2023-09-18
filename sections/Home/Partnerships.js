@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useRef } from "react";
 import Image from "next/image";
 import Slider from "react-slick";
@@ -9,7 +9,7 @@ import Ngo from "./../../assets/images/Home/NGO partners.png";
 import { FaLongArrowAltRight } from "react-icons/fa";
 import { FaLongArrowAltLeft } from "react-icons/fa";
 
-const GallerySection = () => {
+const GallerySection = ({ homeData }) => {
   const settings = {
     infinite: true,
     speed: 500,
@@ -53,68 +53,59 @@ const GallerySection = () => {
 
   return (
     <>
-      
-          <div className="container style-2 ">
-            <div className="row">
-              <div className="col-md-4 bg-water">
-                <div className="align-items-center m-t50 ">
-                  <h4>Our <br/> Partnerships.</h4>
-                  <p>
-                    Providing our services to some of the world's premium
-                    institutions.
-                  </p>
-                </div>
-                <div className="d-flex justify-content-start align-items-center">
-                  <div
-                    className="slick-arrow"
-                    onClick={() => sliderRef.current.slickPrev()}
-                    style={{
-                      width: 60,
-                      height: 60,
-                      fontSize: "24px",
-                      cursor: "pointer",
-                    }}
-                  >
-                    <FaLongArrowAltLeft />
-                  </div>
-                  <div
-                    className="slick-arrow"
-                    onClick={() => sliderRef.current.slickNext()}
-                    style={{
-                      width: 60,
-                      height: 60,
-                      fontSize: "24px",
-                      cursor: "pointer",
-                    }}
-                  >
-                    <FaLongArrowAltRight />
-                  </div>
-                </div>
+      <div className="container style-2 ">
+        {homeData.map((item) => (
+          <div className="row">
+            <div className="col-md-4 bg-water">
+              <div className="align-items-center m-t50 ">
+                <h4>
+                  Our <br /> Partnerships.
+                </h4>
+                <p>
+                  Providing our services to some of the world's premium
+                  institutions.
+                </p>
               </div>
-              <div className="col-md-8">
-                <Slider
-                  ref={sliderRef}
-                  {...settings}
-                  className=" portfolio-carousel-3 style-2 slider-one slider-sp0 arrow-none"
-                >
-                  <div className="slider-item ">
-                  <Image  src={Corporate} alt="" />
-                  </div>
-                  <div className="slider-item ">
-                  <Image  src={Govt} alt="" />
-                  </div>
-                  <div className="slider-item ">
-                  <Image  src={University} alt="" />
-                  </div>
-                  <div className="slider-item ">
-                  <Image  src={Ngo} alt="" />
-                  </div>
-                  
-                </Slider>
+              <div className="d-flex justify-content-start align-items-center">
+                <div
+                  className="slick-arrow"
+                  onClick={() => sliderRef.current.slickPrev()}
+                  style={{
+                    width: 60,
+                    height: 60,
+                    fontSize: "24px",
+                    cursor: "pointer",
+                  }}>
+                  <FaLongArrowAltLeft />
+                </div>
+                <div
+                  className="slick-arrow"
+                  onClick={() => sliderRef.current.slickNext()}
+                  style={{
+                    width: 60,
+                    height: 60,
+                    fontSize: "24px",
+                    cursor: "pointer",
+                  }}>
+                  <FaLongArrowAltRight />
+                </div>
               </div>
             </div>
+            <div className="col-md-8">
+              <Slider
+                ref={sliderRef}
+                {...settings}
+                className=" portfolio-carousel-3 style-2 slider-one slider-sp0 arrow-none">
+                {item.partnerships.map((data) => (
+                  <div className="slider-item ">
+                    <Image width={600} height={400} src={data.image} alt="" />
+                  </div>
+                ))}
+              </Slider>
+            </div>
           </div>
-       
+        ))}
+      </div>
     </>
   );
 };

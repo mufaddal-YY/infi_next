@@ -21,6 +21,7 @@ export default function OppositeContentTimeline() {
         },
       }}
     >
+      
       <TimelineItem>
         <TimelineSeparator className="m-l10">
           <TimelineDot />

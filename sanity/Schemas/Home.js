@@ -23,13 +23,13 @@ export default {
           type: "object",
           fields: [
             {
-              name: "number",
+              name: "description",
               title: "Description",
               type: "string",
             },
             {
-              name: "description",
-              title: "Description",
+              name: "number",
+              title: "Number",
               type: "string",
             },
           ],
@@ -71,10 +71,14 @@ export default {
               title: "Title",
               type: "string",
             },
+            
             {
               name: "icon",
-              title: "Icon SVG Code",
-              type: "string",
+              type: "image",
+              title: "Icon",
+              options: {
+                hotspot: "true",
+              },
             },
           ],
         },
@@ -122,6 +126,14 @@ export default {
               name: "title",
               title: "Title",
               type: "string",
+            },
+            {
+              name: "image",
+              type: "image",
+              title: "Image",
+              options: {
+                hotspot: "true",
+              },
             },
           ],
         },

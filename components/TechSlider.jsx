@@ -2,65 +2,8 @@
 import React from "react";
 import Slider from "react-slick";
 import Image from "next/image";
-import S1 from "@assets/images/Home/cyber.svg"
-import S2 from "@assets/images/Home/arvr.svg"
-import S3 from "@assets/images/Home/financial.svg"
-import S4 from "@assets/images/Home/machinelearning.svg"
 
-
-const content = [
-  {
-    thumb: S1,
-    title: "Cyber Security",
-    
-    
-  },
-  {
-    thumb: S2,
-    title: "AR/VR",
-   
-    
-  },
-  {
-    thumb: S3,
-    title: "Financial Literacy",
-  
-    
-  },
-  {
-    thumb: S4,
-    title: "Machine Learning",
-  
-    
-  },
-  {
-    thumb: S1,
-    title: "Cyber Security",
-    
-    
-  },
-  {
-    thumb: S2,
-    title: "AR/VR",
-   
-    
-  },
-  {
-    thumb: S3,
-    title: "Financial Literacy",
-  
-    
-  },
-  {
-    thumb: S4,
-    title: "Machine Learning",
-  
-    
-  },
- 
-];
-
-const Testi = () => {
+const Testi = ({skills}) => {
   const settings = {
     dots: false,
     infinite: true,
@@ -105,11 +48,11 @@ const Testi = () => {
         {...settings}
         className="testimonial-carousel style2  arrow-none "
       >
-        {content.map((item) => (
-          <div className="slider-item">
+        {skills.map((item) => (
+          <div className="slider-item" key={item.title}>
             <div className="testimonial-bx d-flex style2">
               <div>
-              <Image width={40} src={item.thumb} alt="" />
+              <Image height={40} width={40} src={item.image} alt="" />
               </div>
               <div className="p-l10 p-t5">
                 <p>{item.title}</p>

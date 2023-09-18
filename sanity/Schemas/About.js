@@ -28,7 +28,7 @@ export default {
 
     {
       name: "tagline",
-      title: "Tagline & Image",
+      title: "Tagline Image",
       type: "array",
       of: [
         {
@@ -55,6 +55,14 @@ export default {
               name: "description",
               title: "Description",
               type: "string",
+            },
+            {
+              name: "image",
+              type: "image",
+              title: "Image",
+              option: {
+                hotspot: "true",
+              },
             },
           ],
         },

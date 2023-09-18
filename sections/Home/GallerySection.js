@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useRef, useState } from "react";
 import Image from "next/image";
 import Slider from "react-slick";
@@ -37,7 +37,7 @@ const options = {
   },
 };
 
-const GallerySection = () => {
+const GallerySection = ({ homeData }) => {
   const settings = {
     infinite: true,
     speed: 500,
@@ -104,304 +104,102 @@ const GallerySection = () => {
             Individuals upskilled and empowered across nation.
           </h5>
         </div>
-        <div>
-          <Slider
-            ref={sliderRef}
-            {...settings}
-            className=" portfolio-carousel-3 style-2 slider-one slider-sp0 arrow-none"
-          >
-            <div className="slider-item ">
-              <div className="container  ">
-                <div className="row align-items-center">
-                  <div className="col-md-4 m-b10">
+        {/* <div>
+          {homeData.map((item) => (
+            <Slider
+              ref={sliderRef}
+              {...settings}
+              className=" portfolio-carousel-3 style-2 slider-one slider-sp0 arrow-none">
+              <div className="slider-item ">
+                <div className="container  ">
+                  <div className="row align-items-center">
+                    {item.gallery.map((data) => (
+                      <div className="col-md-4 m-b10">
+                        <div className="portfolio-box style-3">
+                          <div className="text-center ">
+                            <Lightbox
+                              isOpen={lightboxOpen}
+                              onRequestClose={closeLightbox}
+                              selectedImage={selectedImage}
+                            />
+                            <Image
+                              onClick={() => openLightbox(data.image)}
+                              width={600}
+                              height={350}
+                             
+                              src={data.image}
+                              alt={data.caption}
+                            />
+                          </div>
+                          <div className="portfolio-info">
+                            <p className="text-gray">{data.caption}</p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </Slider>
+          ))}
+        </div> */}
+
+<div>
+  {homeData.map((item) => {
+    // Split item.gallery into chunks of 6
+    const galleryChunks = item.gallery.reduce((resultArray, item, index) => { 
+      const chunkIndex = Math.floor(index / 6);
+      if(!resultArray[chunkIndex]) {
+        resultArray[chunkIndex] = [] // start a new chunk
+      }
+      resultArray[chunkIndex].push(item);
+      return resultArray;
+    }, []);
+
+    return (
+      <Slider
+        ref={sliderRef}
+        {...settings}
+        className=" portfolio-carousel-3 style-2 slider-one slider-sp0 arrow-none"
+      >
+        {galleryChunks.map((chunk, chunkIndex) => (
+          <div className="slider-item" key={chunkIndex}>
+            <div className="container">
+              <div className="row align-items-center">
+                {chunk.map((data, dataIndex) => (
+                  <div className="col-md-4 m-b10" key={dataIndex}>
                     <div className="portfolio-box style-3">
-                      <div className="text-center ">
+                      <div className="text-center">
                         <Lightbox
                           isOpen={lightboxOpen}
                           onRequestClose={closeLightbox}
                           selectedImage={selectedImage}
                         />
                         <Image
-                          onClick={() => openLightbox(G1)}
-                          style={{ width: "100%" }}
-                          src={G1}
-                          alt=""
+                          onClick={() => openLightbox(data.image)}
+                          style={{borderRadius: "18px"}}
+                          width={500}
+                          height={350}
+                          src={data.image}
+                          alt={data.caption}
                         />
                       </div>
                       <div className="portfolio-info">
-                        <p className="text-gray">
-                          Alexa student day
-                        </p>
+                        <p className="text-gray">{data.caption}</p>
                       </div>
                     </div>
                   </div>
-
-                  <div className="col-md-8 m-b0">
-                    <div className="row">
-                      <div className="col-md-6 col-6">
-                        <div className="portfolio-box style-3">
-                          <div className="">
-                          <Lightbox
-                            isOpen={lightboxOpen}
-                            onRequestClose={closeLightbox}
-                            selectedImage={selectedImage}
-                          />
-                          <Image
-                            onClick={() => openLightbox(G2)}
-                            width={300}
-                            src={G2}
-                            alt=""
-                          />
-                        </div>
-                        <div className="portfolio-info">
-                        <p className="text-gray">
-                        Ideation camp and innovation hub
-                        </p>
-                      </div>
-                        </div>
-                        
-                      </div>
-
-                      <div className="col-md-6 col-6">
-                        <div className="portfolio-box style-3">
-                          <div className="">
-                          <Lightbox
-                            isOpen={lightboxOpen}
-                            onRequestClose={closeLightbox}
-                            selectedImage={selectedImage}
-                          />
-                          <Image
-                            onClick={() => openLightbox(G3)}
-                            width={300}
-                            src={G3}
-                            alt=""
-                          />
-                        </div>
-                        <div className="portfolio-info">
-                        <p className="text-gray">
-                         Ai for business forum
-                        </p>
-                      </div>
-                        </div>
-                        
-                      </div>
-                      <div className="col-md-6 col-6">
-                        <div className="portfolio-box style-3">
-                          <div className="">
-                          <Lightbox
-                            isOpen={lightboxOpen}
-                            onRequestClose={closeLightbox}
-                            selectedImage={selectedImage}
-                          />
-                          <Image
-                            onClick={() => openLightbox(G4)}
-                            width={300}
-                            src={G4}
-                            alt=""
-                          />
-                        </div>
-                        <div className="portfolio-info">
-                        <p className="text-gray">
-                        Alexa developer circle
-                        </p>
-                      </div>
-                        </div>
-                        
-                      </div>
-                      <div className="col-md-6 col-6">
-                        <div className="portfolio-box style-3">
-                          <div className="">
-                          <Lightbox
-                            isOpen={lightboxOpen}
-                            onRequestClose={closeLightbox}
-                            selectedImage={selectedImage}
-                          />
-                          <Image
-                            onClick={() => openLightbox(G5)}
-                            width={300}
-                            src={G5}
-                            style={{borderRadius:'25px'}}
-                            alt=""
-                          />
-                        </div>
-                        <div className="portfolio-info">
-                        <p className="text-gray">
-                          Alexa student influencer program
-                        </p>
-                      </div>
-                        </div>
-                        
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
-            <div className="slider-item ">
-              <div className="container  ">
-                <div className="row align-items-center">
-                  <div className="col-md-8 m-b0">
-                    <div className="row">
-                      <div className="col-md-6 col-6">
-                        <div className="portfolio-box style-3">
-                          <div className="">
-                          <Lightbox
-                            isOpen={lightboxOpen}
-                            onRequestClose={closeLightbox}
-                            selectedImage={selectedImage}
-                          />
-                          <Image
-                            onClick={() => openLightbox(G7)}
-                            width={300}
-                            style={{borderRadius:'25px'}}
-                            src={G7}
-                            alt=""
-                          />
-                        </div>
-                        <div className="portfolio-info">
-                        <p className="text-gray">
-                          Microsoft azure workshop
-                        </p>
-                      </div>
-                        </div>
-                        
-                      </div>
+          </div>
+        ))}
+      </Slider>
+    );
+  })}
+</div>
 
-                      <div className="col-md-6 col-6">
-                        <div className="portfolio-box style-3">
-                          <div className="">
-                          <Lightbox
-                            isOpen={lightboxOpen}
-                            onRequestClose={closeLightbox}
-                            selectedImage={selectedImage}
-                          />
-                          <Image
-                            onClick={() => openLightbox(G8)}
-                            width={300}
-                            src={G8}
-                            style={{borderRadius:'25px'}}
-                            alt=""
-                          />
-                        </div>
-                        <div className="portfolio-info">
-                        <p className="text-gray">
-                        Microsoft machine learning workshop
-                        </p>
-                      </div>
-                        </div>
-                        
-                      </div>
-                      <div className="col-md-6 col-6">
-                        <div className="portfolio-box style-3">
-                          <div className="">
-                          <Lightbox
-                            isOpen={lightboxOpen}
-                            onRequestClose={closeLightbox}
-                            selectedImage={selectedImage}
-                          />
-                          <Image
-                            onClick={() => openLightbox(G9)}
-                            width={300}
-                            style={{borderRadius:'25px'}}
-                            src={G9}
-                            alt=""
-                          />
-                        </div>
-                        <div className="portfolio-info">
-                        <p className="text-gray">
-                        Microsoft imagine cup
-                        </p>
-                      </div>
-                        </div>
-                        
-                      </div>
-                      <div className="col-md-6 col-6">
-                        <div className="portfolio-box style-3">
-                          <div className="">
-                          <Lightbox
-                            isOpen={lightboxOpen}
-                            onRequestClose={closeLightbox}
-                            selectedImage={selectedImage}
-                          />
-                          <Image
-                            onClick={() => openLightbox(G10)}
-                            width={300}
-                            style={{borderRadius:'25px'}}
-                            src={G10}
-                            alt=""
-                          />
-                        </div>
-                        <div className="portfolio-info">
-                        <p className="text-gray">
-                        Microsoft diversity skilling program
-                        </p>
-                      </div>
-                        </div>
-                        
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-4 m-b0">
-                    <div className="row">
-                     
 
-                     
-                      <div className="col-md-12 col-6">
-                        <div className="portfolio-box style-3">
-                          <div className="">
-                          <Lightbox
-                            isOpen={lightboxOpen}
-                            onRequestClose={closeLightbox}
-                            selectedImage={selectedImage}
-                          />
-                          <Image
-                            onClick={() => openLightbox(G6)}
-                            width={300}
-                            style={{borderRadius:'25px'}}
-                            src={G6}
-                            alt=""
-                          />
-                        </div>
-                        <div className="portfolio-info">
-                        <p className="text-gray">
-                        Ideation camp and innovation hub
-                        </p>
-                      </div>
-                        </div>
-                        
-                      </div>
-                      <div className="col-md-12 col-6">
-                        <div className="portfolio-box style-3">
-                          <div className="">
-                          <Lightbox
-                            isOpen={lightboxOpen}
-                            onRequestClose={closeLightbox}
-                            selectedImage={selectedImage}
-                          />
-                          <Image
-                            onClick={() => openLightbox(G11)}
-                            width={300}
-                            style={{borderRadius:'25px'}}
-                            src={G11}
-                            alt=""
-                          />
-                        </div>
-                        <div className="portfolio-info">
-                        <p className="text-gray">
-                          Alexa student day
-                        </p>
-                      </div>
-                        </div>
-                        
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-           
-          </Slider>
-        </div>
         <div className="d-flex justify-content-center align-items-center">
           <div
             className="slick-arrow"
@@ -411,8 +209,7 @@ const GallerySection = () => {
               height: 60,
               fontSize: "24px",
               cursor: "pointer",
-            }}
-          >
+            }}>
             <FaLongArrowAltLeft />
           </div>
           <div
@@ -423,8 +220,7 @@ const GallerySection = () => {
               height: 60,
               fontSize: "24px",
               cursor: "pointer",
-            }}
-          >
+            }}>
             <FaLongArrowAltRight />
           </div>
         </div>

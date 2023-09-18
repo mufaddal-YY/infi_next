@@ -73,9 +73,17 @@ export default {
           type: "object",
           fields: [
             {
-              name: "icon",
+              name: "title",
               type: "string",
-              title: "Icon Svg",
+              title: "Title ",
+            },
+            {
+              name: "icon",
+              type: "image",
+              title: "Icon",
+              options: {
+                hotspot: "true",
+              },
             },
             {
               name: "description",
@@ -87,6 +95,31 @@ export default {
                 },
                 { type: "image" },
               ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: "certificates",
+      type: "array",
+      title: "certificates",
+      of: [
+        {
+          type: "object",
+          fields: [
+            {
+              name: "title",
+              type: "string",
+              title: "caption ",
+            },
+            {
+              name: "image",
+              type: "image",
+              title: "Certificate",
+              options: {
+                hotspot: "true",
+              },
             },
           ],
         },
@@ -110,6 +143,19 @@ export default {
               name: "description",
               type: "string",
               title: "Description",
+            },
+            {
+              name: "icon",
+              type: "image",
+              title: "Icon",
+              option: {
+                hotspot: "true",
+              },
+            },
+            {
+              name: "hours",
+              type: "string",
+              title: "Hours",
             },
             {
               name: "innerDescription",
@@ -180,6 +226,14 @@ export default {
               name: "title",
               type: "string",
               title: "Title",
+            },
+            {
+              name: "icon",
+              type: "image",
+              title: "Icon",
+              option: {
+                hotspot: "true",
+              },
             },
             {
               name: "description",

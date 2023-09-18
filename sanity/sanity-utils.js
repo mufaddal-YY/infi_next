@@ -10,13 +10,32 @@ export async function getHomeData() {
      sectionHead,
       stats[],
       slider[],
-      services[],
-      whoWeWork[],
-      skills[],
-      gallery[],
-      platforms[],
+      services[] {
+        title,
+        "icon": icon.asset->url,
+      },
+      whowework[]{
+        title,
+        description,
+        "image": image.asset->url,
+      },
+      skills[]{
+        title,
+        "image":image.asset->url,
+      },
+      gallery[]{
+        caption,
+        "image":image.asset->url,
+      },
+      platforms[]{
+        "image":image.asset->url,
+        caption,
+      },
       slc,
-      partnerships[],
+      partnerships[]{
+        "image":image.asset->url,
+        caption,
+      },
       cta,
     }`
   );
@@ -29,18 +48,33 @@ export async function getAboutData() {
       _createdAt,
       aboutSection,
       blockSection,
-      sectionTwo[],
+      tagline,
+      sectionTwo[]{
+        title,
+        description,
+        "image":image.asset->url,
+      },
     }`
   );
 }
 
 export async function getWhatWeDoData() {
   return createClient(clientConfig).fetch(
-    groq`*[_type == "whatWeDo"]{
+    groq`*[_type == "whatwedo"]{
       _id,
       _createdAt,
-      programs[],
-      caseStudies[],
+      programs[]{
+        title,
+        "icon":icon.asset->url,
+        "image":image.asset->url,
+        description,
+      },
+      caseStudies[]{
+        title,
+        "logo":logo.asset->url,
+        description,
+        link,
+      },
     }`
   );
 }
@@ -52,27 +86,63 @@ export async function getHowWeDoData() {
       _createdAt,
       head,
       tagline,
-      process[],
-      whyChoose[],
+      process[]{
+        title,
+        "icon":icon.asset->url,
+        description,
+      },
+      whyChoose[]{
+        title,
+        description,
+        "image":image.asset->url,
+      },
     }`
   );
 }
 
-export async function getUnispark() {
+export async function getUnisparkData() {
   return createClient(clientConfig).fetch(
     groq`*[_type == "unispark"]{
       _id,
       _createdAt,
       bannerHead,
       bannerTag,
-      bannerImage,
-      sectionImage,
+      "bannerImage":bannerImage.asset->url,
+      "sectionImage":sectionImage.asset->url,
       sectionDescription,
-      curriculum[],
-      perks[],
-      learningPath[],
-      placement[],
-      benefits[], 
+      curriculum[]{
+        description,
+      },
+      perks[]{
+        title,
+        "icon":icon.asset->url,
+        description,
+      },
+      certificates[]{
+        title,
+        "image":image.asset->url,
+
+      },
+      learningPath[]{
+        title,
+        description,
+        "icon":icon.asset->url,
+        hours,
+        innerDescription[]{
+          title,
+          description,
+
+        },
+      },
+      placement[]{
+        title,
+        "logo":logo.asset->url,
+      },
+      benefits[]{
+        title,
+        "icon":icon.asset->url,
+        description,
+      },
     }`
   );
 }

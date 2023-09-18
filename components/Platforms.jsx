@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Image from "next/image";
 import React from "react";
 import Slider from "react-slick";
@@ -56,7 +56,7 @@ const content = [
   },
 ];
 
-const Platforms = () => {
+const Platforms = ({ homeData }) => {
   const settings = {
     dots: false,
     infinite: true,
@@ -104,19 +104,26 @@ const Platforms = () => {
           </p>
         </div>
       </div>
-      <Slider
-        {...settings}
-        className="testimonial-carousel style2  arrow-none ">
-        {content.map((item) => (
-          <div className="slider-item">
-            <div className="portfolio-bx d-flex style2">
-              <div>
-                <Image width={150} src={item.thumb} alt="" />
+      {homeData.map((item) => (
+        <Slider
+          {...settings}
+          className="testimonial-carousel style2  arrow-none ">
+          {item.platforms.map((data, index) => (
+            <div className="slider-item" key={index}>
+              <div className="portfolio-bx d-flex style2">
+                <div>
+                  <Image
+                    height={150}
+                    width={150}
+                    src={data.image}
+                    alt={data.caption}
+                  />
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-      </Slider>
+          ))}
+        </Slider>
+      ))}
     </>
   );
 };
