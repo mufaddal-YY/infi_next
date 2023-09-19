@@ -30,9 +30,9 @@ const ProgramDetails = ({ unisparkData }) => {
                   {item.perks.map((data) => (
                     <div className="partner-logo col-md-6">
                       <div className="d-flex">
-                        <Image width={25} height={10} src={data.icon} />
+                        <Image width={25} height={18} src={data.icon} />
 
-                        <h6 className=" fs14 m-l10"> {data.title}</h6>
+                        <h6 className=" fs16 m-l10"> {data.title}</h6>
                       </div>
                       <p className="fs12">
                         <PortableText

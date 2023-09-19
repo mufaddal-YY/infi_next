@@ -1,9 +1,10 @@
-"use client"
+"use client";
 import Image from "next/image";
 import { Accordion } from "react-bootstrap";
 import AzureFundamental from "./../../assets/images/unispark/azure-fundamentals.png";
 import AzureData from "./../../assets/images/unispark/azure-data-fundamentals.png";
 import AzureDeveloper from "./../../assets/images/unispark/azure-developer.png";
+import PortableText from "react-portable-text";
 
 const outerAccordionData = [
   {
@@ -189,91 +190,110 @@ const outerAccordionData = [
   },
 ];
 
-const LearningPath = (index) => {
+const LearningPath = ({ unisparkData, index }) => {
   return (
     <>
-      <div className="section-container section-sp4 bg-white">
-        <div className="container">
-          <h4>Learning Path</h4>
-          <p className="text-blue mt--10 fw5">
-            Unispark Cloud Computing Program overview
-          </p>
-          <div className="row bg-light-blue p-20" style={{borderRadius: "8px"}}>
-            <div className="col-md"></div>
-            <div className="col-md-10">
-              <Accordion className="accordion" defaultActiveKey="1">
-                {outerAccordionData.map((item, index) => (
-                  <Accordion.Item
-                    className="bg-white m-b20"
-                    eventKey={`outer-accordion-${index}`}
-                  >
-                    <Accordion.Header className="d-flex align-items-center">
-                      <Image width={35} src={item.icon} alt="Infispark" />
-                      <div className="flex-grow-1">
-                        <h6 className="p-l15 fs16 text-blue">{item.title}</h6>
-                      </div>
-                      <p className="m-r10 m-t5 d-none d-md-block">
-                        <svg
-                          id="time"
-                          xmlns="http://www.w3.org/2000/svg"
-                          width={18}
-                          viewBox="0 0 27.916 27.85"
-                        >
-                          <path
-                            id="Path_7048"
-                            data-name="Path 7048"
-                            d="M13.958.333A13.45,13.45,0,0,1,23.83,4.419a13.412,13.412,0,0,1,4.086,9.839A13.412,13.412,0,0,1,23.83,24.1a13.45,13.45,0,0,1-9.872,4.086A13.45,13.45,0,0,1,4.086,24.1,13.412,13.412,0,0,1,0,14.258,13.412,13.412,0,0,1,4.086,4.419,13.45,13.45,0,0,1,13.958.333Zm0,25.1a10.737,10.737,0,0,0,7.878-3.269A10.775,10.775,0,0,0,25.1,14.258a10.775,10.775,0,0,0-3.269-7.911,10.737,10.737,0,0,0-7.878-3.269A10.737,10.737,0,0,0,6.08,6.348a10.775,10.775,0,0,0-3.269,7.911A10.775,10.775,0,0,0,6.08,22.169,10.737,10.737,0,0,0,13.958,25.438Zm.686-18.175v7.322l6.276,3.726-1.046,1.765-7.322-4.446V7.263Z"
-                            transform="translate(0 -0.333)"
-                            fill="#006dff"
-                          />
-                        </svg>{" "}
-                        20 Hours
-                      </p>
-                    </Accordion.Header>
-                    <Accordion.Body className="accordion-body1 ">
-                      <div className="row">
-                        <div className="col-md-12">
-                          <p>{item.desc}</p>
+      {unisparkData.map((data) => (
+        <div className="section-container section-sp4 bg-white">
+          <div className="container">
+            <h4>Learning Path</h4>
+            <p className="text-blue mt--10 fw5">
+              Unispark Cloud Computing Program overview
+            </p>
+            <div
+              className="row bg-light-blue p-20"
+              style={{ borderRadius: "8px" }}>
+              <div className="col-md"></div>
+              <div className="col-md-10">
+                <Accordion className="accordion" defaultActiveKey="1">
+                  {data.learningPath.map((item, index) => (
+                    <Accordion.Item
+                      className="bg-white m-b20"
+                      eventKey={`outer-accordion-${index}`}>
+                      <Accordion.Header className="d-flex align-items-center">
+                        <Image
+                          width={35}
+                          height={35}
+                          src={item.icon}
+                          alt="Infispark"
+                        />
+                        <div className="flex-grow-1">
+                          <h6 className="p-l15 fs16 text-blue">{item.title}</h6>
                         </div>
-                        <Accordion className="accordion" defaultActiveKey="1">
-                          {item.innerAccordionItems.map(
-                            (innerItem, innerIndex) => (
-                              <Accordion.Item
-                                className="bg-light-blue m-b20"
-                                eventKey={`inner-accordion-${index}-${innerIndex}`}
-                              >
-                                <Accordion.Header className="d-flex align-items-center">
-                                  <div className="flex-grow-1">
-                                    <h6 className="p-l15 fs14 text-blue">
-                                      {innerItem.title}
-                                    </h6>
-                                  </div>
-                                </Accordion.Header>
-                                <Accordion.Body className="accordion-body1 ">
-                                  <div className="row">
-                                    <div className="col-md-12">
-                                      {innerItem.description.map((desc, i) => (
-                                        <li className="p-t10" key={i}>
-                                          {desc}
-                                        </li>
-                                      ))}
+                        <p className="m-r10 m-t5 d-none d-md-block">
+                          <svg
+                          className="m-r5"
+                            id="time"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width={18}
+                            viewBox="0 0 27.916 27.85">
+                            <path
+                              id="Path_7048"
+                              data-name="Path 7048"
+                              d="M13.958.333A13.45,13.45,0,0,1,23.83,4.419a13.412,13.412,0,0,1,4.086,9.839A13.412,13.412,0,0,1,23.83,24.1a13.45,13.45,0,0,1-9.872,4.086A13.45,13.45,0,0,1,4.086,24.1,13.412,13.412,0,0,1,0,14.258,13.412,13.412,0,0,1,4.086,4.419,13.45,13.45,0,0,1,13.958.333Zm0,25.1a10.737,10.737,0,0,0,7.878-3.269A10.775,10.775,0,0,0,25.1,14.258a10.775,10.775,0,0,0-3.269-7.911,10.737,10.737,0,0,0-7.878-3.269A10.737,10.737,0,0,0,6.08,6.348a10.775,10.775,0,0,0-3.269,7.911A10.775,10.775,0,0,0,6.08,22.169,10.737,10.737,0,0,0,13.958,25.438Zm.686-18.175v7.322l6.276,3.726-1.046,1.765-7.322-4.446V7.263Z"
+                              transform="translate(0 -0.333)"
+                              fill="#006dff"
+                            />
+                          </svg>
+                          {item.hours}
+                        </p>
+                      </Accordion.Header>
+                      <Accordion.Body className="accordion-body1 ">
+                        <div className="row">
+                          <div className="col-md-12">
+                            <p>
+                              <PortableText
+                                className="custom-portable-text"
+                                // Pass in block content straight from Sanity.io
+                                content={item.description}
+                                projectId="oy08lsi5"
+                                dataset="production"
+                              />
+                            </p>
+                          </div>
+                          <Accordion className="accordion" defaultActiveKey="1">
+                            {item.innerDescription.map(
+                              (innerItem, innerIndex) => (
+                                <Accordion.Item
+                                  className="bg-light-blue m-b20"
+                                  eventKey={`inner-accordion-${index}-${innerIndex}`}>
+                                  <Accordion.Header className="d-flex align-items-center">
+                                    <div className="flex-grow-1">
+                                      <h6 className="p-l15 fs14 text-blue">
+                                        {innerItem.title}
+                                      </h6>
                                     </div>
-                                  </div>
-                                </Accordion.Body>
-                              </Accordion.Item>
-                            )
-                          )}
-                        </Accordion>
-                      </div>
-                    </Accordion.Body>
-                  </Accordion.Item>
-                ))}
-              </Accordion>
+                                  </Accordion.Header>
+                                  <Accordion.Body className="accordion-body1 ">
+                                    <div className="row">
+                                      <div className="col-md-12">
+                                        <p>
+                                          <PortableText
+                                            className="custom-portable-text"
+                                            // Pass in block content straight from Sanity.io
+                                            content={innerItem.description}
+                                            projectId="oy08lsi5"
+                                            dataset="production"
+                                          />
+                                        </p>
+                                      </div>
+                                    </div>
+                                  </Accordion.Body>
+                                </Accordion.Item>
+                              )
+                            )}
+                          </Accordion>
+                        </div>
+                      </Accordion.Body>
+                    </Accordion.Item>
+                  ))}
+                </Accordion>
+              </div>
+              <div className="col-md"></div>
             </div>
-            <div className="col-md"></div>
           </div>
         </div>
-      </div>
+      ))}
     </>
   );
 };

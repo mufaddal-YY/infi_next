@@ -21,7 +21,7 @@ const content = [
   },
 ];
 
-const Testi = () => {
+const Testi = ({data}) => {
   const settings = {
     dots: true,
     loop: true,
@@ -65,10 +65,10 @@ const Testi = () => {
       <Slider
         {...settings}
         className="testimonial-carousel style2  arrow-none ">
-        {content.map((item) => (
+        {data.map((item) => (
           <div className="slider-item text-center">
             <div className="text-center p-20 ">
-              <Image src={item.thumb} alt="" />
+              <Image width={600} height={500} src={item.image} alt={item.title} />
             </div>
           </div>
         ))}
