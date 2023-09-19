@@ -17,7 +17,7 @@ const WhatWeOffer = ({ homeData }) => {
           <div className="row m-sm-t0 mt--80">
             <div className="col-md"></div>
             <div className="col-md-8 feature-bx5">
-              <div className="text-center m-b20">
+              <div className="text-center m-b20 m-t20">
                 <h4>What we offer</h4>
                 <p>
                   Our services and programs unlock new opportunities for

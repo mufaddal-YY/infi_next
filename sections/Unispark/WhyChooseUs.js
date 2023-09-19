@@ -37,9 +37,7 @@ const WhyChooseUs = ({ unisparkData }) => {
                 </div>
               </div>
             ))}
-            
-
-            
+          
             <div className="col-md"></div>
           </div>
         ))}

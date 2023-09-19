@@ -7,18 +7,6 @@ import { FaLongArrowAltRight } from "react-icons/fa";
 import { FaLongArrowAltLeft } from "react-icons/fa";
 import Lightbox from "./../../components/Lightbox";
 
-import G1 from "./../../assets/images/Home/gallery1.jpg";
-import G2 from "./../../assets/images/Home/gallery2.jpg";
-import G3 from "./../../assets/images/Home/gallery3.jpg";
-import G4 from "./../../assets/images/Home/gallery4.jpg";
-import G5 from "./../../assets/images/Home/gallery5.jpg";
-import G6 from "./../../assets/images/Home/Ideation Camp and Innovation Hub.jpg";
-import G7 from "./../../assets/images/Home/Microsoft Azure Workshop.jpg";
-import G8 from "./../../assets/images/Home/Microsoft Machine Learning Workshop.jpg";
-import G9 from "./../../assets/images/Home/Microsot Imagine Cup.jpg";
-import G10 from "./../../assets/images/Home/Microsoft Diversity Skilling Program.jpg";
-import G11 from "./../../assets/images/Home/Alexa Student Day1.jpg";
-
 const options = {
   settings: {
     overlayColor: "rgba(0,0,0,0.9)",
@@ -99,106 +87,68 @@ const GallerySection = ({ homeData }) => {
     <>
       <div className="container">
         <div className="text-center">
-          <Image width={600} src={Numbers} alt="" />
+          <Image width={600} height={200} src={Numbers} alt="" />
           <h5 className="fw4">
             Individuals upskilled and empowered across nation.
           </h5>
         </div>
-        {/* <div>
-          {homeData.map((item) => (
-            <Slider
-              ref={sliderRef}
-              {...settings}
-              className=" portfolio-carousel-3 style-2 slider-one slider-sp0 arrow-none">
-              <div className="slider-item ">
-                <div className="container  ">
-                  <div className="row align-items-center">
-                    {item.gallery.map((data) => (
-                      <div className="col-md-4 m-b10">
-                        <div className="portfolio-box style-3">
-                          <div className="text-center ">
-                            <Lightbox
-                              isOpen={lightboxOpen}
-                              onRequestClose={closeLightbox}
-                              selectedImage={selectedImage}
-                            />
-                            <Image
-                              onClick={() => openLightbox(data.image)}
-                              width={600}
-                              height={350}
-                             
-                              src={data.image}
-                              alt={data.caption}
-                            />
-                          </div>
-                          <div className="portfolio-info">
-                            <p className="text-gray">{data.caption}</p>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </Slider>
-          ))}
-        </div> */}
 
-<div>
-  {homeData.map((item) => {
-    // Split item.gallery into chunks of 6
-    const galleryChunks = item.gallery.reduce((resultArray, item, index) => { 
-      const chunkIndex = Math.floor(index / 6);
-      if(!resultArray[chunkIndex]) {
-        resultArray[chunkIndex] = [] // start a new chunk
-      }
-      resultArray[chunkIndex].push(item);
-      return resultArray;
-    }, []);
+        <div>
+          {homeData.map((item) => {
+            // Split item.gallery into chunks of 6
+            const galleryChunks = item.gallery.reduce(
+              (resultArray, item, index) => {
+                const chunkIndex = Math.floor(index / 6);
+                if (!resultArray[chunkIndex]) {
+                  resultArray[chunkIndex] = []; // start a new chunk
+                }
+                resultArray[chunkIndex].push(item);
+                return resultArray;
+              },
+              []
+            );
 
-    return (
-      <Slider
-        ref={sliderRef}
-        {...settings}
-        className=" portfolio-carousel-3 style-2 slider-one slider-sp0 arrow-none"
-      >
-        {galleryChunks.map((chunk, chunkIndex) => (
-          <div className="slider-item" key={chunkIndex}>
-            <div className="container">
-              <div className="row align-items-center">
-                {chunk.map((data, dataIndex) => (
-                  <div className="col-md-4 m-b10" key={dataIndex}>
-                    <div className="portfolio-box style-3">
-                      <div className="text-center">
-                        <Lightbox
-                          isOpen={lightboxOpen}
-                          onRequestClose={closeLightbox}
-                          selectedImage={selectedImage}
-                        />
-                        <Image
-                          onClick={() => openLightbox(data.image)}
-                          style={{borderRadius: "18px"}}
-                          width={500}
-                          height={350}
-                          src={data.image}
-                          alt={data.caption}
-                        />
-                      </div>
-                      <div className="portfolio-info">
-                        <p className="text-gray">{data.caption}</p>
+            return (
+              <Slider
+                ref={sliderRef}
+                {...settings}
+                className=" portfolio-carousel-3 style-2 slider-one slider-sp0 arrow-none">
+                {galleryChunks.map((chunk, chunkIndex) => (
+                  <div className="slider-item" key={chunkIndex}>
+                    <div className="container">
+                      <div className="row align-items-center">
+                        {chunk.map((data, dataIndex) => (
+                          <div className="col-md-4 m-b10" key={dataIndex}>
+                            <div className="portfolio-box style-3">
+                              <div className="text-center">
+                                <Lightbox
+                                  isOpen={lightboxOpen}
+                                  onRequestClose={closeLightbox}
+                                  selectedImage={selectedImage}
+                                />
+                                <Image
+                                  onClick={() => openLightbox(data.image)}
+                                  style={{ borderRadius: "18px" }}
+                                  width={500}
+                                  height={350}
+                                  src={data.image}
+                                  alt={data.caption}
+                                />
+                              </div>
+                              <div className="portfolio-info">
+                                <p className="text-gray">{data.caption}</p>
+                              </div>
+                            </div>
+                          </div>
+                        ))}
                       </div>
                     </div>
                   </div>
                 ))}
-              </div>
-            </div>
-          </div>
-        ))}
-      </Slider>
-    );
-  })}
-</div>
-
+              </Slider>
+            );
+          })}
+        </div>
 
         <div className="d-flex justify-content-center align-items-center">
           <div
