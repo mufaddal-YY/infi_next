@@ -17,7 +17,7 @@ const WhatWeOffer = ({ homeData }) => {
           <div className="row m-sm-t0 mt--80">
             <div className="col-md"></div>
             <div className="col-md-8 feature-bx5">
-              <div className="text-center m-b20 m-t20">
+              <div className="text-center m-b20">
                 <h4>What we offer</h4>
                 <p>
                   Our services and programs unlock new opportunities for
@@ -25,7 +25,7 @@ const WhatWeOffer = ({ homeData }) => {
                 </p>
               </div>
 
-              <div className="our-partner-box bg-white text-center row">
+              <div className="our-partner-box bg-white text-center row m-t20">
                 {item.services.map((data) => (
                   <div className="partner-logo col-md-4" key={data.title}>
                     <div className="text-center hover-blue">                
