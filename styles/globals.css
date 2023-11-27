@@ -6231,6 +6231,7 @@ width: 100%;
   border-bottom: 3px solid rgba(0, 0, 0, 0);
   border-width: 0 0 3px;
   border-radius: 8px;
+  white-space: normal;
 }
 .product-description .tab-pane {
   padding: 10px 0;

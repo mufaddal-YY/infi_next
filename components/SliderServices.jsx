@@ -1,10 +1,8 @@
 "use client";
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
-import { Nav, Tab } from "react-bootstrap";
+import Slider from "react-slick";
+import { BsArrowRight } from "react-icons/bs";
 import PortableText from "react-portable-text";
-import ServicesTab from "../../components/ServicesTab";
+import Image from "next/image";
 
 const ecosystem = (
   <svg
@@ -12,7 +10,6 @@ const ecosystem = (
     enable-background="new 0 0 512 512"
     width={40}
     viewBox="0 0 512 512"
-
     xmlns="http://www.w3.org/2000/svg">
     <g>
       <g>
@@ -83,7 +80,6 @@ const ecosystem = (
 const awareness = (
   <svg
     id="Layer_1"
-   
     viewBox="0 0 512 512"
     width={40}
     xmlns="http://www.w3.org/2000/svg">
@@ -101,11 +97,7 @@ const awareness = (
 );
 
 const content = (
-  <svg
-   
-    viewBox="0 0 64 64"
-  width={40}
-    xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 64 64" width={40} xmlns="http://www.w3.org/2000/svg">
     <g id="Blogger-Writer-Pencil-Browser-Blogging">
       <path d="m8 6h2v2h-2z" />
       <path d="m12 6h2v2h-2z" />
@@ -320,72 +312,86 @@ const data = [
   },
 ];
 
-const Programs = ({ whatWeDo }) => {
-  return (
-    <div>
-      {whatWeDo.map((item, index) => (
-        <div className="container  ">
-          <div>
-            <h4>Streamlining your success with our programs.</h4>
-          </div>
-          <div className="ttr-tabs product-description tabs-site-button hidden">
-            <Tab.Container id="product-description" defaultActiveKey={0}>
-              <Nav className="nav nav-tabs tab-card" role="tablist">
-                {data.map((data, index) => (
-                  <Nav.Item key={index}>
-                    <Nav.Link eventKey={index}>
-                      <div className="p-10">
-                        {data.icon}
-                        <div className="m-t10" style={{width: 95, justifyContent: "space-between" }}>{data.title}</div>
-                      </div>
-                    </Nav.Link>
-                  </Nav.Item>
-                ))}
-              </Nav>
-              <Tab.Content>
-                {item.programs.map((data, index) => (
-                  <Tab.Pane key={index} eventKey={index}>
-                    <div className="row m-t30">
-                      <div className="col-md-6 m-b10 ">
-                        <div className="text-center mt-10">
-                          <Image
-                            src={data.image}
-                            width={600}
-                            height={400}
-                            alt=""
-                          />
-                        </div>
-                      </div>
+const SliderServices = ({ whatWeDo }) => {
+  const settings = {
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    afterChange: () => {
+      console.log("Slick has initialized");
+    },
 
-                      <div className="col-md-6">
-                        <div className="">
-                          <h5 className="title text-blue">{data.title}</h5>
-                          <hr />
-                          <p>
-                            <PortableText
-                              className="custom-portable-text"
-                              // Pass in block content straight from Sanity.io
-                              content={data.description}
-                              projectId="oy08lsi5"
-                              dataset="production"
-                            />
-                          </p>
-                        </div>
+    responsive: [
+      {
+        breakpoint: 1280,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+      {
+        breakpoint: 991,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+      {
+        breakpoint: 591,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
+  };
+
+  return (
+    <>
+      <div className="">
+        {whatWeDo.map((item, index) => (
+          <div className="slider-item">
+            <div className="m-t30">
+              <Slider
+                {...settings}
+                className=" portfolio-carousel-3 style-2 slider-sp0 arrow-none">
+                {item.programs.map((tab, index) => (
+                  <div className="slider-item" key={index}>
+                    <div className="bg-white counter-card1 m-b20">
+                      <h6 className="text-blue">{tab.title}</h6>
+                    </div>
+                    <div className="m-t30">
+                      <div className="text-center mt-20 m-b20">
+                        <Image
+                          src={tab.image}
+                          width={600}
+                          height={400}
+                          alt=""
+                        />
+                      </div>
+                      <div className="p-10">
+                        <PortableText
+                          className="custom-portable-text"
+                          // Pass in block content straight from Sanity.io
+                          content={tab.description}
+                          projectId="oy08lsi5"
+                          dataset="production"
+                        />
                       </div>
                     </div>
-                  </Tab.Pane>
+                  </div>
                 ))}
-              </Tab.Content>
-            </Tab.Container>
+              </Slider>
+            </div>
           </div>
-
-          <div className="hidden-desk">
-            <ServicesTab />
-          </div>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+    </>
   );
 };
 
-export default Programs;
+export default SliderServices;

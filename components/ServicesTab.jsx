@@ -87,7 +87,8 @@ export default function ScrollableTabsButtonAuto() {
                 </g>
               </svg>
             }
-            label="Ecosystem Readiness"
+            label="Ecosystem 
+            Readiness"
             sx={{ textTransform: "capitalize" }}
           />
           <Tab

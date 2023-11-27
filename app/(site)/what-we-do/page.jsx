@@ -4,6 +4,7 @@ import Cta from "@components/Cta";
 import Programs from "@sections/Services/Programs";
 import CaseStudy from "@sections/Services/CaseStudy";
 import { getWhatWeDoData } from "@sanity/sanity-utils";
+import SliderServices from "@components/SliderServices";
 
 export const metadata = {
   title: "Infispark - What we do",
@@ -13,13 +14,17 @@ export const metadata = {
 
 const Services = async () => {
   const whatWeDoData = await getWhatWeDoData();
-  console.log(whatWeDoData)
   return (
     <>
       <HeroBanner />
 
-      <div className=" section-sp4 bg-white">
+      <div className=" section-sp4 bg-white hidden">
         <Programs whatWeDo={whatWeDoData} />
+      </div>
+
+      <div className=" section-sp0 bg-white hidden-desk">
+        
+        <SliderServices whatWeDo={whatWeDoData} />
       </div>
 
       <div className=" section-sp4 bg-white">
